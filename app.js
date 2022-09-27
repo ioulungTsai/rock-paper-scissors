@@ -2,32 +2,10 @@ let rockCount
 let paperCount
 let scissorsCount
 
-// below getComputerChoice function make "Scissors" dominant
 function getComputerChoice() {
-  let arr = ['Rock', 'Paper', 'Scissors']
-  let choise = arr[Math.round(Math.random()*2)]
-  return choise
-}
-
-function doTenThousandTimes() {
-  rockCount = 0
-  paperCount = 0
-  scissorsCount = 0
-  for(let i = 0; i < 10000; i++) {
-    const result = getComputerChoice()
-    if(result === 'Rock') {
-      rockCount++
-    } else if(result === 'Paper') {
-      paperCount++
-    } else {
-      scissorsCount++
-    }
-  }
-  console.log('Rock total', rockCount, 'Paper total', paperCount,'Scissors total', scissorsCount)
-}
-
-for(let i = 0; i < 10; i++) {
-  doTenThousandTimes()
+  const randomModNum = (Math.round(Math.random() * 100)) % 3
+  const arr = ['Rock', 'Paper', 'Scissors']
+  return arr[randomModNum]
 }
 
 function playRound(playerSelection, computerSelection) {
