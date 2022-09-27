@@ -1,46 +1,30 @@
-let rockCount
-let paperCount
-let scissorsCount
-
 function getComputerChoice() {
   const randomModNum = (Math.round(Math.random() * 100)) % 3
-  const arr = ['Rock', 'Paper', 'Scissors']
+  const arr = ['rock', 'paper', 'scissors']
   return arr[randomModNum]
 }
 
 function playRound(playerSelection, computerSelection) {
   let lowercaseSelection = playerSelection.toLowerCase()
+  const result = {
+    rock: {
+      rock: 'Tie! Try again!',
+      paper: 'You Lose! Paper covers rock.',
+      scissors: 'You Win! Rock beats Scissors.'
+    },
+    paper: {
+      paper: 'Tie! Try again!',
+      scissors: 'You Lose! Scissors cut paper.',
+      rock: 'You Win! Paper covers rock.'
+    },
+    scissors: {
+      scissors: 'Tie! Try again!',
+      paper: 'You Win! Scissors cut paper.',
+      rock: 'You Lose! Rock beats Scissors.'
+    }
+  }
 
-  if(lowercaseSelection !== 'rock' && lowercaseSelection !== 'paper' && lowercaseSelection !== 'scissors') {
-    return "You should take the responsibility to choose the only three choices!"
-  }
-  if(lowercaseSelection === 'rock') {
-    if(computerSelection === 'Rock') {
-      return 'Nice try!'
-    } else if (computerSelection === 'Paper') {
-      return 'You Lose! Paper beats Rock! HaHa!'
-    } else {
-      return 'You Win! blah Blah blah ...'
-    }
-  }
-  if(lowercaseSelection === 'paper') {
-    if(computerSelection === 'Rock') {
-      return 'You Win! blah Blah blah ...'
-    } else if (computerSelection === 'Paper') {
-      return 'Nice try!'
-    } else {
-      return 'You Lose! Scissors beats Paper! HaHa!'
-    }
-  }
-  if(lowercaseSelection === 'scissors') {
-    if(computerSelection === 'Rock') {
-      return 'You Lose! Rock beats Scissors! HaHa!'
-    } else if (computerSelection === 'Paper') {
-      return 'You Win! blah Blah blah ...'
-    } else {
-      return 'Nice try!'
-    }
-  }
+  return result[lowercaseSelection][computerSelection]
 }
 
 function game() {
