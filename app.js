@@ -34,15 +34,12 @@ function game() {
     const playerSelection = "ROCK"
     const computerSelection = getComputerChoice()
     const result = playRound(playerSelection, computerSelection)
-    if(result.includes('Nice')) {
-      playerScore += 1
-      computerScore += 1
+    if(result.includes('Win')) {
+      playerScore ++
     } else if (result.includes('Lose')) {
-      computerScore += 1
-    } else {
-      playerScore += 1
+      computerScore ++
     }
-    console.log(result)
+    console.log(result, 'Payer Score:', playerScore, 'Computer Score:', computerScore)
   }
 
   if(playerScore >= computerScore) {
@@ -52,4 +49,4 @@ function game() {
   }
 }
 
-// game()
+game()
